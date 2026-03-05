@@ -1,0 +1,294 @@
+Paws and Paychecks FULL BLUEPRINT
+
+You are an expert full-stack game developer. Build a complete, interactive virtual pet + financial literacy game called Paws and Paychecks, following this blueprint exactly.
+
+GENERAL OVERVIEW
+
+Game lasts 12 in-game weeks.
+
+Player adopts a pet and manages:
+
+Pet health (0–100)
+
+Pet happiness (0–100)
+
+Player wallet/balance
+
+Each week, the player:
+
+Plays a unique, interactive minigame tied to their job (performance determines weekly income)
+
+Spends money on pet needs
+
+Faces a random financial event
+
+Include short delays between rounds (~1–2 seconds) to improve pacing.
+
+Dynamic pet visuals: appearance changes depending on health and happiness.
+
+UI colors dynamically reflect stats while keeping the base scheme:
+
+Negative wallet → red highlights
+
+Low health/happiness → subtle warnings or color changes
+
+Positive stats → normal or green accents
+
+HOME SCREEN
+
+Welcome player by name (persistent).
+
+Pet name changes each game.
+
+Options:
+
+Start Game
+
+Trophy Bookshelf (tracks past games)
+
+Settings / Help
+
+Trophy rules:
+
+No trophy if bankrupt or pet health/happiness < 50
+
+Bronze → Silver → Gold based on weekly and overall performance
+
+Hard Mode: thresholds lowered
+
+Platinum trophy for exceptional Hard Mode performance
+
+JOB & SALARY SYSTEM
+
+Player takes a 5-question Job Aptitude Quiz at start.
+
+Quiz determines:
+
+Job type
+
+Weekly salary
+
+Jobs affect:
+
+Minigame type
+
+Difficulty of financial management
+
+Income scaling
+
+Example jobs and corresponding minigames:
+
+Job	Minigame Example	Skill Tested	Reward Scaling
+Office	Typing/logic puzzle	Accuracy & speed	Faster completion → higher income
+Chef	Ingredient sorting / recipe challenge	Precision & timing	Correct combos → higher income
+Engineer	Circuit connection puzzle	Problem solving	Fewer mistakes → higher income
+Teacher	Quiz grading / matching	Attention to detail	More correct → higher income
+Artist	Color matching / drawing prompt	Creativity & speed	Better completion → higher income
+
+Each minigame must be interactive, visually engaging, and different each week.
+
+FINANCIAL MECHANICS
+
+Wallet balance: tracks income minus expenses.
+
+Expenses include:
+
+Food
+
+Housing/Upkeep
+
+Healthcare
+
+Toys (happiness buffer)
+
+Random weekly events using weighted probability:
+
+Example Event Table:
+
+Event Name	Effect	Probability
+Vet emergency	-20 to -50 balance, -5 health	10%
+Broken toy replacement	-10 to -20 balance	15%
+Work bonus	+20 to +50 balance	10%
+Unexpected tax refund	+10 to +30 balance	5%
+Minor illness	-5 health, -5 happiness	10%
+Gift from friend	+5 happiness	10%
+Normal week (no event)	None	40%
+
+Events should show dynamic pop-ups or modals and update pet and wallet stats accordingly.
+
+PET SYSTEM
+
+Stats: Health (0–100), Happiness (0–100)
+
+Visual changes based on stats:
+
+Health < 50 → pet looks sick/weak
+
+Happiness < 50 → pet looks sad
+
+Health & Happiness ≥ 80 → pet looks energetic/happy
+
+Stats change from:
+
+Purchases (food, toys, healthcare)
+
+Neglect (skipping care)
+
+Random events
+
+Include animations or visual indicators when stats change.
+
+UI REQUIREMENTS
+
+Dashboard shows:
+
+Wallet balance
+
+Pet portrait & stats
+
+Week counter
+
+Dynamic UI feedback:
+
+Negative wallet → red highlights/warnings
+
+Low health/happiness → yellow or orange accents
+
+High stats → green/neutral accents
+
+Modals/dialogs for:
+
+Minigames
+
+Events
+
+Spending choices
+
+Trophy viewing
+
+Keep base color scheme consistent but adapt to current game state visually.
+
+TROPHY SYSTEM
+
+Week 12 summary screen includes:
+
+Total income
+
+Total spending
+
+Financial efficiency score
+
+Pet health & happiness score
+
+Trophy rules:
+
+Bronze: moderate performance (balanced stats, some income saved)
+
+Silver: good performance (high stats, decent savings)
+
+Gold: excellent performance (high stats + large savings)
+
+Platinum: Hard Mode + exceptional performance
+
+Scaling formulas for trophies (suggested):
+
+Base Score = (Total Income / Max Possible Income)*40 
+           + (Avg Pet Health / 100)*30 
+           + (Avg Pet Happiness / 100)*30
+
+Bronze >= 50  
+Silver >= 70  
+Gold >= 85  
+Platinum (Hard Mode) >= 95
+
+GAME FLOW & PACE
+
+Each round/week:
+
+Display home screen / status
+
+Run weekly minigame
+
+Apply income based on minigame performance
+
+Apply random event effects
+
+Update pet visuals dynamically
+
+Show updated dashboard / short delay (~1–2 seconds)
+
+Repeat for 12 weeks
+
+ARCHITECTURE REQUIREMENTS
+
+Suggested folder structure:
+
+/src
+  /components        # UI elements (buttons, stats, modals)
+  /screens           # Home, minigames, end report, trophies
+  /data              # Event data, pet images, aptitude quiz questions
+  /logic             # Core mechanics: finance, pet stats, minigames, RNG
+  /assets            # Pet images, UI icons, placeholders
+
+
+Core systems must be modular and reusable:
+
+Minigame logic
+
+Event generator
+
+Pet stats updater
+
+Trophy system
+
+TECH REQUIREMENTS
+
+Framework options:
+
+Web: React, Svelte, Vue + lightweight state management
+
+Desktop: Python + Tkinter/Pygame or Electron
+
+Must provide:
+
+Complete source code
+
+Instructions to run
+
+Mock data for events
+
+Placeholder pet assets
+
+ADDITIONAL REQUIREMENTS
+
+Hard Mode:
+
+Lower starting salary
+
+Higher expenses
+
+More negative events
+
+Adjust trophy thresholds
+
+Pet visuals must dynamically respond to stats
+
+Minigames interactive, weekly, tied to job, and determine income
+
+Short delays between rounds to improve pacing
+
+Job aptitude quiz has 5 questions
+
+FINAL DELIVERABLES
+
+Complete codebase with modular structure
+
+Setup instructions
+
+File structure explanation
+
+Design notes & framework choices
+
+Suggestions for future improvements
+
+Document any reasonable assumptions
